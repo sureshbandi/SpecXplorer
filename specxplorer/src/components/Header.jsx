@@ -1,9 +1,7 @@
-// src/components/Header.jsx
 export default function Header() {
-    return (
-      <header className="bg-blue-500 text-white p-4">
-        <h1 className="text-3xl font-bold">My Redoc API Docs</h1>
-      </header>
-    );
-  }
-  
+  return (
+    <header className="bg-gray-900 text-white p-4 shadow-lg">
+      <h1 className="text-2xl font-bold">SpecXplorer</h1>
+    </header>
+  );
+}
