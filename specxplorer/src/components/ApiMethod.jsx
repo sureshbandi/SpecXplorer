@@ -9,7 +9,7 @@ export default function ApiMethod({ method }) {
   };
 
   return (
-    <span className={`px-3 py-1 rounded text-white ${colors[method] || "bg-gray-500"}`}>
+    <span className={`px-3 py-1 rounded text-xs  text-white ${colors[method] || "bg-gray-500"}`}>
       {method}
     </span>
   );

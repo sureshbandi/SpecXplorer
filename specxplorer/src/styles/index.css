@@ -1,1 +1,28 @@
 @import "tailwindcss";
+/* Global Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 6px;  /* Thin scrollbar width */
+    height: 6px; /* Thin scrollbar height for horizontal scrolling */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #1e293b; /* Dark background for track */
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #64748b; /* Thumb color */
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475569; /* Darker thumb on hover */
+  }
+  
+  /* Optional: Hide scrollbar by default but show on hover */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  :hover::-webkit-scrollbar {
+    display: block;
+  }

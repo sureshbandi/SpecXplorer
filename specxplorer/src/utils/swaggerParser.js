@@ -17,18 +17,29 @@ export async function loadSwagger(url) {
  * Extracts API paths and details from Swagger JSON.
  */
 export function parseApiDocs(swaggerJson) {
-  if (!swaggerJson || !swaggerJson.paths) return [];
+  if (!swaggerJson || !swaggerJson.paths) return {};
 
-  return Object.entries(swaggerJson.paths).flatMap(([path, methods]) =>
-    Object.entries(methods).map(([method, details]) => ({
-      id: `${method.toUpperCase()} ${path}`,
-      path,
-      method: method.toUpperCase(),
-      summary: details.summary || "No description available",
-      description: details.description || "",
-      parameters: details.parameters || [],
-      requestBody: details.requestBody || null,
-      responses: details.responses || {},
-    }))
-  );
+  const apiGroups = {};
+
+  Object.entries(swaggerJson.paths).forEach(([path, methods]) => {
+    Object.entries(methods).forEach(([method, details]) => {
+      const category = details.tags?.[0] || "Uncategorized"; // Use first tag as category
+      if (!apiGroups[category]) {
+        apiGroups[category] = [];
+      }
+
+      apiGroups[category].push({
+        id: `${method.toUpperCase()} ${path}`,
+        path,
+        method: method.toUpperCase(),
+        summary: details.summary || "No description available",
+        description: details.description || "",
+        parameters: details.parameters || [],
+        requestBody: details.requestBody || null,
+        responses: details.responses || {},
+      });
+    });
+  });
+
+  return apiGroups;
 }

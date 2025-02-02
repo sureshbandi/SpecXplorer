@@ -1,3 +1,4 @@
+import tailwindScrollbar from 'tailwind-scrollbar'
 // tailwind.config.mjs
 export default {
     content: [
@@ -7,6 +8,8 @@ export default {
     theme: {
       extend: {},
     },
-    plugins: [],
+    plugins: [
+      tailwindScrollbar()
+    ],
   }
   
